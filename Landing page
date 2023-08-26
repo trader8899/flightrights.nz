@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Flight Rights NZ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+
+        h1 {
+            background-color: #3498db;
+            color: #fff;
+            padding: 20px;
+            margin: 0;
+            text-align: center;
+        }
+
+        h2 {
+            padding: 10px;
+            margin: 0;
+            background-color: #2980b9;
+            color: #fff;
+        }
+
+        #container {
+            padding: 20px;
+            border: 5px solid #3498db;
+            margin: 20px;
+            width: calc(100% - 40px);
+            max-width: 500px;
+            margin: 20px auto;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        #output {
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            padding: 20px;
+            background-color: #fff;
+            overflow-x: auto;
+        }
+
+        #rights {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        #rights:hover {
+            background-color: #2980b9;
+        }
+
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Flight Rights NZ</h1>
+    <h2>A simple tool to auto-generate a letter you can send to any airline in NZ when your flight has been delayed or cancelled.</h2>
+
+    <div id="rights"><a href="/Users/tomainge-roy/Desktop/Flight Refund Website/yourRights.html" target="_blank">Your Rights</a></div>
+
+    <div id="container">
+        <p>Enter your information below to auto-generate a letter.</p>
+
+        <label for="fname">First Name:</label>
+        <input type="text" id="fname" name="fname">
+
+        <label for="lname">Last Name:</label>
+        <input type="text" id="lname" name="lname">
+
+        <label for="airline">Airline:</label>
+        <input type="text" id="airline" name="airline">
+
+        <label for="bookingReference">Booking Reference:</label>
+        <input type="text" id="bookingReference" name="bookingReference">
+
+        <label for="departureDate">Date of Departure:</label>
+        <input type="date" id="departureDate" name="departureDate">
+
+        <label for="flightNumber">Flight Number:</label>
+        <input type="text" id="flightNumber" name="flightNumber">
+
+        <label for="departureAirport">Departure Airport:</label>
+        <input type="text" id="departureAirport" name="departureAirport">
+
+        <label for="destinationAirport">Destination Airport:</label>
+        <input type="text" id="destinationAirport" name="destinationAirport">
+
+        <label for="totalClaimAmount">Total Claim Amount ($):</label>
+        <input type="number" id="totalClaimAmount" name="totalClaimAmount" min="0">
+
+        <label for="bankAccount">Bank Account Details for Refund:</label>
+        <input type="text" id="bankAccount" name="bankAccount">
+
+        <button onclick="generateLetter()">Generate Letter</button>
+
+        <pre id="output"></pre>
+    </div>
+
+    <script>
+        function generateLetter() {
+            var fname = document.getElementById("fname").value;
+            var lname = document.getElementById("lname").value;
+            var airline = document.getElementById("airline").value;
+            var bookingReference = document.getElementById("bookingReference").value;
+            var departureDate = document.getElementById("departureDate").value;
+            var flightNumber = document.getElementById("flightNumber").value;
+            var departureAirport = document.getElementById("departureAirport").value;
+            var destinationAirport = document.getElementById("destinationAirport").value;
+            var totalClaimAmount = document.getElementById("totalClaimAmount").value;
+            var bankAccount = document.getElementById("bankAccount").value;
+            var text = "Dear " + airline + ",\n\n";
+            text += "My flight was cancelled and I believe I am due compensation for the costs of delay.\n\n";
+            text += "My flight details are as follows:\n";
+            text += "Booking Reference: " + bookingReference + "\n";
+            text += "Date of Departure: " + departureDate + "\n";
+            text += "Flight Number: " + flightNumber + "\n";
+            text += "Departure Airport: " + departureAirport + "\n";
+            text += "Destination Airport: " + destinationAirport + "\n\n";
+            text += "My rights under the NZ Civil Aviation Act are as follows:\n\n";
+            text += "The New Zealand Civil Aviation Act\n";
+            text += "Your Rights Under the New Zealand Civil Aviation Act 1990\n";
+            text += "Where your NZ domestic flight has been delayed or cancelled, you may be entitled under the Civil Aviation Act 1990 to claim the lesser of:\n\n";
+            text += "1. the amount of damage proved to have been sustained as a result of the delay; or\n";
+            text += "2. an amount representing 10 times the sum paid for the carriage.\n\n";
+            text += "You may also be entitled to a remedy under the New Zealand Consumer Guarantees Act 1993.\n\n";
+            text += "The total claim amount I am requesting is: $" + totalClaimAmount + ".\n\n";
+            text += "My bank account details for the refund are: " + bankAccount + "\n\n";
+            text += "I look forward to your prompt response on this matter.\n\n";
+            text += "Best regards,\n\n";
+            text += fname + " " + lname;
+            document.getElementById("output").innerText = text;
+        }
+    </script>
+
+</body>
+
+</html>
