@@ -26,6 +26,7 @@
             margin: 0;
             background-color: #2980b9;
             color: #fff;
+            text-align: center;
         }
 
         #container {
@@ -35,6 +36,10 @@
             width: calc(100% - 40px);
             max-width: 500px;
             margin: 20px auto;
+        }
+
+        #container a {
+            color: #3498db;
         }
 
         label {
@@ -72,6 +77,11 @@
             overflow-x: auto;
         }
 
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
         #rights {
             position: absolute;
             top: 20px;
@@ -98,10 +108,20 @@
     <h1>Flight Rights NZ</h1>
     <h2>A simple tool to auto-generate a letter you can send to any airline in NZ when your flight has been delayed or cancelled.</h2>
 
-<div id="rights"><a href="YourRights.html" target="_blank">Your Rights</a></div>
+    <div id="rights"><a href="YourRights.html" target="_blank">Your Rights</a></div>
 
     <div id="container">
-        <p>Enter your information below to auto-generate a letter.</p>
+        <p>Welcome to Flight Rights NZ!</p>
+
+        <p>I set up this website so people could learn about their rights when airlines in NZ delay or cancel their flights.</p>
+
+        <p>Most people don't realise when your flight is delayed you can be reimbursed for the costs of the delay, which include food, drink, accommodation, transportation and even booking a separate flight with a separate airline.</p>
+
+        <p>The limits set by companies like Jetstar are arbitrary and designed to convince unsuspecting consumers that they are only owed what is offered by the airline, when in fact the amount is much higher, up to 10 times the cost of your ticket.</p>
+
+        <p>Click on the <a href="YourRights.html" target="_blank">Your Rights</a> tab to learn more about your rights when a flight has been delayed or cancelled.</p>
+
+        <p>If you would like to claim reimbursement from an airline, simply fill in the details of your flight in the form below, and an automated letter will be generated that you can email to the airline requesting compensation.</p>
 
         <label for="fname">First Name:</label>
         <input type="text" id="fname" name="fname">
@@ -154,18 +174,16 @@
             text += "Flight Number: " + flightNumber + "\n";
             text += "Departure Airport: " + departureAirport + "\n";
             text += "Destination Airport: " + destinationAirport + "\n\n";
-            text += "My rights under the NZ Civil Aviation Act are as follows:\n\n";
-            text += "The New Zealand Civil Aviation Act\n";
-            text += "Your Rights Under the New Zealand Civil Aviation Act 1990\n";
-            text += "Where your NZ domestic flight has been delayed or cancelled, you may be entitled under the Civil Aviation Act 1990 to claim the lesser of:\n\n";
+            text += "My rights under the NZ Civil Aviation Act 1990 are as follows:\n\n";
+            text += "<i>Where your NZ domestic flight has been delayed or cancelled, you may be entitled under the Civil Aviation Act 1990 to claim the lesser of:\n\n";
             text += "1. the amount of damage proved to have been sustained as a result of the delay; or\n";
-            text += "2. an amount representing 10 times the sum paid for the carriage.\n\n";
-            text += "You may also be entitled to a remedy under the New Zealand Consumer Guarantees Act 1993.\n\n";
+            text += "2. an amount representing 10 times the sum paid for the carriage.</i>\n\n";
+            text += "<i>You may also be entitled to a remedy under the New Zealand Consumer Guarantees Act 1993.</i>\n\n";
             text += "The total claim amount I am requesting is: $" + totalClaimAmount + ".\n\n";
             text += "I look forward to your prompt response on this matter.\n\n";
             text += "Best regards,\n\n";
             text += fname + " " + lname;
-            document.getElementById("output").innerText = text;
+            document.getElementById("output").innerHTML = text;
         }
     </script>
 
